@@ -30,7 +30,9 @@ var ListaSelezione = function(element, options)
 		}
 
 		var text = li.html();
-		var id = "input_" + (li.attr("title") || string2title(text));
+		if (li.attr("title") == '')
+			li.attr("title", string2title(text));
+		var id = "input_" + li.attr("title");
 
 		var name = ul.attr("id");
 		if (options.tipoCheckbox == 'checkbox')
@@ -47,15 +49,12 @@ var ListaSelezione = function(element, options)
 			.attr("for", id)
 			.appendTo(li);
 
-
-		// TODO: mettere il link grazie al "for"
 	};
 
-	// Private method - can only be called from within this object
-	var privateMethod = function()
-	{
-		console.log('private method called!');
-	};
+	this.getSelectedLIs = function() {
+		return ul.find("input:checked").parent();
+	}
+
 
 	var string2title = function(stringa) {
 		stringa = $.trim(stringa);
@@ -91,6 +90,7 @@ var ListaSelezione = function(element, options)
 		if (options.tipoCheckbox == 'radio') {
 			ctrl.parent().parent().find("input[type='radio']:not(:checked)").parent().removeClass(options.cssChecked);
 		}
+		ul.trigger("cambiaselezione", [obj.getSelectedLIs()]);
 
 	});
 
