@@ -25,7 +25,6 @@ var ListaSelezione = function(element, options)
 		// Se sto aggiungendo una riga ma non era ancora facente parte la UL,
 		// la aggiungo.
 		if (li.parent()[0] != ul[0]) {
-			console.log("DEBUG: aggiungo la nuova riga alla lista.");
 			li.appendTo(ul);
 			if ( ul.find("li").length % 2 != 0)
 				li.addClass(options.cssPari);
