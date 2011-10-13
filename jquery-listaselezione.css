@@ -1,0 +1,59 @@
+.listaselezione {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	color: #555;
+	line-height: 1.6em;
+	font-size: 12px; /* RIMUOVIMI */
+	border: 1px solid #ccc;
+}
+
+.listaselezione li {
+	cursor: default;
+}
+
+.listaselezione li.pari:hover,
+.listaselezione li.dispari:hover,
+.listaselezione li:hover label {
+	background-color: #dde;
+}
+
+.listaselezione li.pari {
+	background-color: white;
+}
+
+.listaselezione li.dispari {
+	background-color: #f7f7f7;
+}
+
+.listaselezione li input {
+	display: block;
+	float: left;
+	position: relative;
+	top: 3px;
+	left: 3px;
+}
+
+.listaselezione li.checked {
+	background-color: #B5D3FF !important;
+	font-style: italic;
+}
+
+.listaselezione li.checked:hover,
+.listaselezione li.checked:hover label {
+	background-color: #61A0FF !important;
+	color: white;
+	font-style: italic;
+}
+
+
+.listaselezione li label {
+	display: block;
+	margin: 0;
+	padding: 3px 3px 3px 28px;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
