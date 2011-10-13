@@ -29,12 +29,17 @@ var ListaSelezione = function(element, options)
 		}
 
 		var text = li.html();
-		var id = li.attr("title") || string2title(text);
+		var id = "input_" + (li.attr("title") || string2title(text));
+
+		var name = ul.attr("id");
+		if (options.tipoCheckbox == 'checkbox')
+			name += "[]";
 
 		li.empty();
 		$("<input />")
 			.attr("type", options.tipoCheckbox)
 			.attr("id", id)
+			.attr("name", name)
 			.appendTo(li);
 		$("<label />")
 			.html(text)
