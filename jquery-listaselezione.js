@@ -13,6 +13,7 @@ var ListaSelezione = function(element, options)
 		cssListClass : "listaselezione",
 		cssPari : "pari",
 		cssDispari : "dispari",
+		cssChecked : "checked",
 		tipoCheckbox: "checkbox" // oppure "radio"
 	}, options || {});
 
@@ -80,10 +81,17 @@ var ListaSelezione = function(element, options)
 		// Applico una classe CSS su attivazione/click
 		var ctrl = $(event.target).filter("input[type='checkbox'], input[type='radio']");
 		if (!ctrl.length) return;
+
 		if (ctrl.is(":checked"))
-			ctrl.parent().addClass("checked");
+			ctrl.parent().addClass(options.cssChecked);
 		else
-			ctrl.parent().removeClass("checked");
+			ctrl.parent().removeClass(options.cssChecked);
+		// Nel caso dei radio button, devo togliere la classe checked a tutti
+		// gli altri.
+		if (options.tipoCheckbox == 'radio') {
+			ctrl.parent().parent().find("input[type='radio']:not(:checked)").parent().removeClass(options.cssChecked);
+		}
+
 	});
 
 
