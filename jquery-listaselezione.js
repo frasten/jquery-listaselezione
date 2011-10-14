@@ -20,7 +20,7 @@ var ListaSelezione = function(element, options)
 
 
 	// Public method - can be called from client code
-	this.addRiga = function(elemento)
+	this.addRiga = function(elemento, checked)
 	{
 		var li = $(elemento);
 		// Se sto aggiungendo una riga ma non era ancora facente parte la UL,
@@ -47,6 +47,7 @@ var ListaSelezione = function(element, options)
 			.attr("type", options.tipoCheckbox)
 			.attr("id", id)
 			.attr("name", name)
+			.attr("checked", checked == true)
 			.appendTo(li);
 		$("<label />")
 			.html(text)
