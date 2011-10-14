@@ -16,6 +16,7 @@ var ListaSelezione = function(element, options)
 		cssChecked : "checked",
 		tipoCheckbox: "checkbox" // oppure "radio"
 	}, options || {});
+	var oldSelection = [];
 
 
 	// Public method - can be called from client code
@@ -85,6 +86,7 @@ var ListaSelezione = function(element, options)
 
 	ul.change(function(event) {
 		// Applico una classe CSS su attivazione/click
+		// TODO: al primo load non viene chiamato, ragionarci.
 		var ctrl = $(event.target).filter("input[type='checkbox'], input[type='radio']");
 		if (!ctrl.length) return;
 
@@ -97,7 +99,9 @@ var ListaSelezione = function(element, options)
 		if (options.tipoCheckbox == 'radio') {
 			ctrl.parent().parent().find("input[type='radio']:not(:checked)").parent().removeClass(options.cssChecked);
 		}
-		ul.trigger("cambiaselezione", [obj.getSelectedLIs()]);
+		var sel = obj.getSelectedLIs();
+		ul.trigger("cambiaselezione", [sel, obj.oldSelection]);
+		obj.oldSelection = sel;
 
 	});
 
