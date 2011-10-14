@@ -53,6 +53,9 @@ var ListaSelezione = function(element, options)
 			.html(text)
 			.attr("for", id)
 			.appendTo(li);
+		if (checked == true) {
+			li.addClass(options.cssChecked);
+		}
 
 	};
 
