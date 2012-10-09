@@ -36,9 +36,11 @@ var ListaSelezione = function(element, options)
 		var text = li.html();
 		if (li.attr("title") == '')
 			li.attr("title", string2title(text));
-		var id = "input_" + li.attr("title");
 
 		var name = ul.attr("id");
+
+		var id = "input_" + name + "_" + li.attr("title");
+
 		if (options.tipoCheckbox == 'checkbox')
 			name += "[]";
 
