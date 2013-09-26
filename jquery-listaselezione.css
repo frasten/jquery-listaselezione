@@ -1,5 +1,5 @@
 .listaselezione {
-	list-style-type: none;
+	list-style-type: none !important;
 	margin: 0;
 	padding: 0;
 	color: #555;
@@ -11,6 +11,7 @@
 
 .listaselezione li {
 	cursor: default;
+	list-style-type: none !important;
 }
 
 .listaselezione li.pari:hover,
